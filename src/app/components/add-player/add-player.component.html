@@ -54,7 +54,7 @@
             <mat-label>Status:</mat-label>
             <mat-form-field class="example-full-width">
                     <mat-select [(value)]="selected" formControlName="status">
-                            <mat-option [value]="statusArray" *ngFor="let statusArray of statusArray">{{statusArray}}
+                            <mat-option [value]="statusArray" *ngFor="let statusArray of StatusArray">{{StatusArray}}
                             </mat-option>
                           </mat-select>
                           <mat-error *ngIf="handleError('status', 'required')">

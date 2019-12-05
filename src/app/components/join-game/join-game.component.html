@@ -1,1 +1,66 @@
-<p>join-game works!</p>
+<div class="title-group">
+        <h1 class="mat-h1">Join Game</h1>
+        <mat-divider fxFlex="1 0"></mat-divider>
+      </div>
+      
+      <!-- Form -->
+      <div class="inner-wrapper">
+        <form [formGroup]="joinGameForm" (ngSubmit)="joinGameForm()" #resetPlayerForm="ngForm" novalidate>
+                <mat-card>
+                        <div class="controlers-wrapper">
+                          <!-- Name -->
+                          <mat-form-field class="example-full-width">
+                            <mat-label>Player:</mat-label>
+                            <input matInput placeholder="Player name" formControlName="player_name">
+                          </mat-form-field>
+                  
+                          <!-- Ranking -->
+                          <mat-form-field>
+                            <mat-label>Ranking:</mat-label>
+                            <mat-select [(value)]="selected" formControlName="section">
+                              <mat-option [value]="rankArray" *ngFor="let rankArray of rankArray">{{rankArray}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+            
+                          <!-- Score -->
+                          <mat-label>Score:</mat-label>
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Score" formControlName="score">
+                          </mat-form-field>
+            
+                          <!-- Time -->
+                          <mat-label>Time:</mat-label>
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Time" formControlName="time">
+                            </mat-form-field>
+            
+                            <!-- Favourite Game -->
+                          <mat-label>Favourite Game:</mat-label>
+                          <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Favourite Game" formControlName="game">
+                            </mat-form-field>
+            
+                        <mat-label>Customer:</mat-label>
+                        <mat-form-field class="example-full-width">
+                        <mat-select [(value)]="selected" formControlName="status">
+                                <mat-option [value]="statusArray" *ngFor="let statusArray of statusArray">{{statusArray}}
+                                </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                        </div>
+                      </mat-card>
+      
+          <!-- Submit & Reset -->
+          <mat-card>
+            <div class="full-wrapper button-wrapper">
+              <div class="button-wrapper">
+                <button mat-flat-button color="warn">Join Game</button>
+              </div>
+              <div class="button-wrapper">
+                <button mat-flat-button color="warn" [routerLink]="/player-rankings">Cancel</button>
+              </div>
+            </div>
+          </mat-card>
+        </form>
+      </div>
