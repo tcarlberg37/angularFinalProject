@@ -28,7 +28,7 @@ playerRoute.route('/').get((req, res) => {
 })
 
 // Get single player
-playerRoute.route('/read-player/:id').get((req, res) => {
+playerRoute.route('/read-player/:id').get((req, res, next) => {
     Player.findById(req.params.id, (error, data) => {
     if (error) {
       return next(error)
