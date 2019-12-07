@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Player } from './player';
+import { Game } from './game';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
@@ -15,7 +16,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  // Add player
   AddPlayer(data: Player): Observable<any> {
     let API_URL = `${this.endpoint}/add-player`;
     return this.http.post(API_URL, data)
@@ -24,12 +24,10 @@ export class ApiService {
       )
   }
 
-  // Get all players
   GetPlayers() {
-    return this.http.get(`${this.endpoint}`);
+    return this.http.get(`${this.endpoint}/players`);
   }
 
-  // Get player
   GetPlayer(id): Observable<any> {
     let API_URL = `${this.endpoint}/read-player/${id}`;
     return this.http.get(API_URL, { headers: this.headers }).pipe(
@@ -40,21 +38,56 @@ export class ApiService {
     )
   }
 
-  // Update player
   UpdatePlayer(id, data: Player): Observable<any> {
     let API_URL = `${this.endpoint}/edit-player/${id}`;
     return this.http.put(API_URL, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     )
   }
-
-  // Delete player
+  
   DeletePlayer(id): Observable<any> {
     var API_URL = `${this.endpoint}/delete-player/${id}`;
     return this.http.delete(API_URL).pipe(
       catchError(this.errorMgmt)
     )
   }
+
+  AddGame(data: Game): Observable<any> {
+    let API_URL = `${this.endpoint}/add-game`;
+    return this.http.post(API_URL, data)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  }
+
+  GetGames() {
+    return this.http.get(`${this.endpoint}/games`);
+  }
+
+  GetGame(id): Observable<any> {
+    let API_URL = `${this.endpoint}/read-game/${id}`;
+    return this.http.get(API_URL, { headers: this.headers }).pipe(
+      map((res: Response) => {
+        return res || {}
+      }),
+      catchError(this.errorMgmt)
+    )
+  }
+
+  UpdateGame(id, data: Game): Observable<any> {
+    let API_URL = `${this.endpoint}/edit-game/${id}`;
+    return this.http.put(API_URL, data, { headers: this.headers }).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
+
+  DeleteGame(id): Observable<any> {
+    var API_URL = `${this.endpoint}/delete-game/${id}`;
+    return this.http.delete(API_URL).pipe(
+      catchError(this.errorMgmt)
+    )
+  }
+
 
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {

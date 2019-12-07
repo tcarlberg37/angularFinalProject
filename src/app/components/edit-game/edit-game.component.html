@@ -1,0 +1,74 @@
+<!-- Title group  -->
+<div class="title-group">
+    <h1 class="mat-h1">Edit Game</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+  </div>
+  
+  <!-- Form -->
+  <div class="inner-wrapper">
+    <form [formGroup]="gameForm" (ngSubmit)="updateGameForm()" #resetGameForm="ngForm">
+
+      <mat-card>
+        <div class="controlers-wrapper">
+          <mat-form-field class="example-full-width">
+            <mat-label>Title:</mat-label>
+            <input matInput placeholder="Title" formControlName="title" required>
+            <mat-error *ngIf="handleError('title', 'required')">
+              You must provide a <strong>title</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Platform:</mat-label>
+            <mat-select formControlName="platform" required>
+              <mat-option [value]="platform" *ngFor="let platform of platformArray">{{platform}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="handleError('platform', 'required')">
+              Platform is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-label>Genre:</mat-label>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Genre" formControlName="genre">
+          </mat-form-field>
+
+          <mat-label>Rating:</mat-label>
+          <mat-form-field class="example-full-width">
+            <mat-select formControlName="rating">
+                <mat-option [value]="rating" placeholder="# of Stars" *ngFor="let rating of ratingArray">{{rating}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          <mat-label>Publisher:</mat-label>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Publisher" formControlName="publisher">
+            </mat-form-field>
+
+            <mat-label>Release Date:</mat-label>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Release Date" formControlName="release">
+            </mat-form-field>
+
+        <mat-label>Status:</mat-label>
+        <mat-form-field class="example-full-width">
+            <mat-select [(value)]="selected" formControlName="status" required>
+                <mat-option [value]="status" *ngFor="let status of statusArray">{{status}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="handleError('status', 'required')">Status is required</mat-error>
+      </mat-form-field>
+        </div>
+      </mat-card>
+  
+      <mat-card>
+        <div class="full-wrapper button-wrapper">
+          <div class="button-wrapper">
+            <input type="submit" class="btn btn-info" mat-flat-button color="warn" />
+          </div>
+        </div>
+      </mat-card>
+    </form>
+  </div>

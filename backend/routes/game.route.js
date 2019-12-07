@@ -12,12 +12,13 @@ gameRoute.route('/add-game').post((req, res, next) => {
       return next(error)
     } else {
       res.json(data)
+      console.log('Game successfully created!')
     }
   })
 });
 
 // Get all Games
-gameRoute.route('/').get((req, res) => {
+gameRoute.route('/games').get((req, res) => {
     Game.find((error, data) => {
     if (error) {
       return next(error)
@@ -40,7 +41,7 @@ gameRoute.route('/read-game/:id').get((req, res) => {
 
 
 // Update Game
-gameRoute.route('/update-game/:id').put((req, res, next) => {
+gameRoute.route('/edit-game/:id').put((req, res, next) => {
     Game.findByIdAndUpdate(req.params.id, {
     $set: req.body
   }, (error, data) => {

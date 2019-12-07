@@ -1,9 +1,10 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild, NgZone } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatChipInputEvent } from '@angular/material';
+import { MatChipInputEvent, MatTableDataSource } from '@angular/material';
 import { ApiService } from './../../shared/api.service';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Game } from 'src/app/shared/game';
 
 export interface Subject {
   name: string;
@@ -22,10 +23,12 @@ export class AddPlayerComponent implements OnInit {
   addOnBlur = true;
   @ViewChild('chipList', {static: false}) chipList;
   @ViewChild('resetPlayerForm', {static: false}) myNgForm;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   playerForm: FormGroup;
   statusArray: any = ['Available', 'Unavailable'];
   rankArray: any = [1,2,3,4,5,6,7,8,9,10];
+  GameData: any = [];
+  dataSource: MatTableDataSource<Game>;
+  gameArray: any = ['Halo 3', 'Halo 4', 'Minecraft', 'Spiderman', 'Call of Duty', 'Warcraft 3', 'World of Warcraft', 'Age of Empires 2', 'Age of Empires 3'];
 
 
   ngOnInit() {
@@ -36,8 +39,18 @@ export class AddPlayerComponent implements OnInit {
     public fb: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    private playerApi: ApiService
-  ) { }
+    private playerApi: ApiService,
+  ) { 
+    /*
+    this.gameApi.GetGames().subscribe(data => {
+      this.GameData = data;
+      this.gameArray = this.gameApi.GetGames().forEach(element => {
+        element[0];
+      });
+      this.dataSource = new MatTableDataSource<Game>(this.GameData);
+    }) 
+    */
+  }
 
   /* Reactive book form */
   submitBookForm() {

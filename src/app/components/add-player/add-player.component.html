@@ -46,7 +46,10 @@
                 <!-- Favourite Game -->
               <mat-label>Favourite Game:</mat-label>
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Favourite Game" formControlName="favourite_game">
+                <mat-select [(value)]="selected" formControlName="favourite_game" required>
+                  <mat-option [value]="game" *ngFor="let game of gameArray">{{game}}
+                  </mat-option>
+                </mat-select>
                 <mat-error *ngIf="handleError('player_name', 'required')">
                     You must provide a <strong>favourite game</strong>
                   </mat-error>

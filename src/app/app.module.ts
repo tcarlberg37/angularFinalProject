@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { AddPlayerComponent } from './components/add-player/add-player.component';
 import { PlayerRankingsComponent } from './components/player-rankings/player-rankings.component';
@@ -14,8 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './shared/api.service';
 import { AppRoutingModule } from './app-routing.module';
-
-
+import { AddGameComponent } from './components/add-game/add-game.component';
+import { EditGameComponent } from './components/edit-game/edit-game.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,9 @@ import { AppRoutingModule } from './app-routing.module';
     PlayerListComponent,
     EditPlayerComponent,
     JoinGameComponent,
-    GameListComponent
+    GameListComponent,
+    AddGameComponent,
+    EditGameComponent
   ],
   imports: [
     BrowserModule,

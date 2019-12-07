@@ -19,7 +19,7 @@ let Game = new Schema({
     type: String
   },
   release: {
-      type: String
+    type: String
   },
   status: {
     type: String

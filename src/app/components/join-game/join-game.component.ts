@@ -46,13 +46,13 @@ export class JoinGameComponent implements OnInit {
   }
 
   joinGame() {
-    console.log(this.playerForm.value)
     var id = this.actRoute.snapshot.paramMap.get('id');
-    /*
+    // joining a game marks the player as unavailable
+    this.playerForm.value.status = "Unavailable";
+    console.log(this.playerForm.value)
     this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe( res => {
-      this.ngZone.run(() => this.router.navigateByUrl('/player-list'))
+      this.ngZone.run(() => this.router.navigateByUrl('/player-rankings'))
     });
-    */
   }
 
 }

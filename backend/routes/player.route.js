@@ -12,12 +12,13 @@ playerRoute.route('/add-player').post((req, res, next) => {
       return next(error)
     } else {
       res.json(data)
+      console.log('Player successfully created!')
     }
   })
 });
 
 // Get all players
-playerRoute.route('/').get((req, res) => {
+playerRoute.route('/players').get((req, res) => {
     Player.find((error, data) => {
     if (error) {
       return next(error)
