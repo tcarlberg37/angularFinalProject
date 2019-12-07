@@ -22,9 +22,8 @@ export class EditPlayerComponent implements OnInit {
   addOnBlur = true;
   @ViewChild('chipList', {static: false}) chipList;
   @ViewChild('resetPlayerForm', {static: false}) myNgForm;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   playerForm: FormGroup;
-  StatusArray: any = ['Available', 'Unavailable'];
+  statusArray: any = ['Available', 'Unavailable'];
   rankArray: any = [1,2,3,4,5,6,7,8,9,10];
 
   ngOnInit() {
@@ -40,18 +39,16 @@ export class EditPlayerComponent implements OnInit {
   ) { 
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.playerApi.GetPlayer(id).subscribe(data => {
-      console.log(data.subjects)
-      this.StatusArray = data.status;
-      this.rankArray = data.rank;
+      console.log(data)
       this.playerForm = this.fb.group({
-        player_name: [data.player_name, [Validators.required]],
-        rank: [data.rank, [Validators.required]],
-        score: [data.score, [Validators.required]],
-        time: [data.time],
-        favourite_game: [data.favourite_game, [Validators.required]],
-        status: [data.status]
+        player_name: data.player_name,
+        rank: data.rank,
+        score: data.score,
+        time: data.time,
+        favourite_game: data.favourite_game,
+        status: data.status
       })      
-    })    
+    }) 
   }
 
   /* Reactive book form */
@@ -62,7 +59,7 @@ export class EditPlayerComponent implements OnInit {
       score: [0],
       time: ['0d 0h 0m'],
       favourite_game: ['', [Validators.required]],
-      status: [this.StatusArray]
+      status: [this.statusArray]
     })
   }
 
@@ -75,11 +72,9 @@ export class EditPlayerComponent implements OnInit {
   updatePlayerForm() {
     console.log(this.playerForm.value)
     var id = this.actRoute.snapshot.paramMap.get('id');
-    if (window.confirm('Are you sure you want to update?')) {
-      this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe( res => {
-        this.ngZone.run(() => this.router.navigateByUrl('/player-list'))
-      });
-    }
+    this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe( res => {
+      this.ngZone.run(() => this.router.navigateByUrl('/player-list'))
+    });
   }
   
 }

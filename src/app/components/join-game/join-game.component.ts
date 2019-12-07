@@ -19,8 +19,6 @@ export class JoinGameComponent implements OnInit {
   @ViewChild('resetPlayerForm', {static: false}) myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   playerForm: FormGroup;
-  StatusArray: any = ['Available', 'Unavailable'];
-  rankArray: any = [1,2,3,4,5,6,7,8,9,10];
 
   ngOnInit() {
     
@@ -35,18 +33,26 @@ export class JoinGameComponent implements OnInit {
   ) { 
     var id = this.actRoute.snapshot.paramMap.get('id');
     this.playerApi.GetPlayer(id).subscribe(data => {
-      console.log(data.subjects)
-      this.StatusArray = data.status;
-      this.rankArray = data.rank;
+      console.log(data);
       this.playerForm = this.fb.group({
-        player_name: [data.player_name, [Validators.required]],
-        rank: [data.rank, [Validators.required]],
-        score: [data.score, [Validators.required]],
-        time: [data.time],
-        favourite_game: [data.favourite_game, [Validators.required]],
-        status: [data.status]
+        player_name: data.player_name,
+        rank: data.rank,
+        score: data.score,
+        time: data.time,
+        favourite_game: data.favourite_game,
+        status: data.status
       })      
     })    
+  }
+
+  joinGame() {
+    console.log(this.playerForm.value)
+    var id = this.actRoute.snapshot.paramMap.get('id');
+    /*
+    this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe( res => {
+      this.ngZone.run(() => this.router.navigateByUrl('/player-list'))
+    });
+    */
   }
 
 }

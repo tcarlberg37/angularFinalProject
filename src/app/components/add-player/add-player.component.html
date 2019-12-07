@@ -6,23 +6,23 @@
       
       <!-- Form -->
       <div class="inner-wrapper">
-        <form [formGroup]="playerForm" (ngSubmit)="submitPlayerForm()" #resetPlayerForm="ngForm" novalidate>
+        <form [formGroup]="playerForm" (ngSubmit)="submitPlayerForm()" #resetPlayerForm="ngForm">
 
           <mat-card>
             <div class="controlers-wrapper">
               <!-- Name -->
               <mat-form-field class="example-full-width">
                 <mat-label>Player Name:</mat-label>
-                <input matInput placeholder="Player name" formControlName="player_name">
+                <input matInput placeholder="Player name" formControlName="player_name" required>
                 <mat-error *ngIf="handleError('player_name', 'required')">
-                  You must provide a<strong>player name</strong>
+                  You must provide a <strong>player name</strong>
                 </mat-error>
               </mat-form-field>
       
               <!-- Ranking -->
               <mat-form-field>
                 <mat-label>Ranking:</mat-label>
-                <mat-select [(value)]="selected" formControlName="section">
+                <mat-select formControlName="rank" required>
                   <mat-option [value]="rankArray" *ngFor="let rankArray of rankArray">{{rankArray}}
                   </mat-option>
                 </mat-select>
@@ -46,21 +46,24 @@
                 <!-- Favourite Game -->
               <mat-label>Favourite Game:</mat-label>
               <mat-form-field class="example-full-width">
-                <input matInput placeholder="Favourite Game" formControlName="game">
+                <input matInput placeholder="Favourite Game" formControlName="favourite_game">
+                <mat-error *ngIf="handleError('player_name', 'required')">
+                    You must provide a <strong>favourite game</strong>
+                  </mat-error>
                 </mat-form-field>
 
 
             <!-- Status -->
             <mat-label>Status:</mat-label>
             <mat-form-field class="example-full-width">
-                    <mat-select [(value)]="selected" formControlName="status">
-                            <mat-option [value]="statusArray" *ngFor="let statusArray of StatusArray">{{StatusArray}}
-                            </mat-option>
-                          </mat-select>
-                          <mat-error *ngIf="handleError('status', 'required')">
-                            Status is required
-                          </mat-error>
-              </mat-form-field>
+                <mat-select [(value)]="selected" formControlName="status" required>
+                        <mat-option [value]="statusArray" *ngFor="let statusArray of statusArray">{{statusArray}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="handleError('status', 'required')">
+                        Status is required
+                      </mat-error>
+          </mat-form-field>
             </div>
           </mat-card>
       
@@ -68,7 +71,7 @@
           <mat-card>
             <div class="full-wrapper button-wrapper">
               <div class="button-wrapper">
-                <button mat-flat-button color="warn">Submit</button>
+                <input type="submit" class="btn btn-info" mat-flat-button color="warn" />
               </div>
             </div>
           </mat-card>

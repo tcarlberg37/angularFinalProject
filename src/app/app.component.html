@@ -1,22 +1,20 @@
 <!-- Toolbar -->
+<!--
 <mat-toolbar color="primary" class="header">
-  <div>Players</div>
+  <div style="display: block;">Players</div>
   <span class="nav-tool-items">
     <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon>
   </span>
 </mat-toolbar>
+-->
 
 <mat-sidenav-container>
   <!-- Sidenav -->
-  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
-    [fixedTopGap]>
+  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true" [fixedTopGap]>
     <mat-nav-list>
       <!-- Player Screens -->
       <a mat-list-item routerLinkActive="active" routerLink="/player-rankings">
-        <mat-icon>add</mat-icon> Player Rankings
-      </a>
-      <a mat-list-item routerLinkActive="active" routerLink="/join-game">
-        <mat-icon>add</mat-icon> Join Game
+        <mat-icon>format_list_bulleted</mat-icon> Player Rankings
       </a>
       <!-- Admin Screens -->
       <a mat-list-item routerLinkActive="active" routerLink="/add-player">
@@ -26,7 +24,7 @@
         <mat-icon>format_list_bulleted</mat-icon> View Player List
       </a>
       <a mat-list-item routerLinkActive="active" routerLink="/game-list">
-        <mat-icon>add</mat-icon> View Games List
+        <mat-icon>format_list_bulleted</mat-icon> View Games List
       </a>
     </mat-nav-list>
   </mat-sidenav>

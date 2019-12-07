@@ -6,13 +6,13 @@
       
       <!-- Form -->
       <div class="inner-wrapper">
-        <form [formGroup]="playerForm" (ngSubmit)="updatePlayerForm()" #resetPlayerForm="ngForm" novalidate>
+        <form [formGroup]="playerForm" (ngSubmit)="updatePlayerForm()" #resetPlayerForm="ngForm">
                 <mat-card>
                         <div class="controlers-wrapper">
                           <!-- Name -->
                           <mat-form-field class="example-full-width">
                             <mat-label>Player Name:</mat-label>
-                            <input matInput placeholder="Player name" formControlName="player_name">
+                            <input matInput formControlName="player_name">
                             <mat-error *ngIf="handleError('player_name', 'required')">
                               You must provide a<strong>player name</strong>
                             </mat-error>
@@ -21,7 +21,7 @@
                           <!-- Ranking -->
                           <mat-form-field>
                             <mat-label>Ranking:</mat-label>
-                            <mat-select [(value)]="selected" formControlName="section">
+                            <mat-select [value]="selected" formControlName="rank">
                               <mat-option [value]="rankArray" *ngFor="let rankArray of rankArray">{{rankArray}}
                               </mat-option>
                             </mat-select>
@@ -39,13 +39,13 @@
                           <!-- Time -->
                           <mat-label>Time:</mat-label>
                           <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Time" formControlName="time">
+                            <input matInput placeholder="Time" formControlName="time" value="element.time">
                             </mat-form-field>
             
                             <!-- Favourite Game -->
                           <mat-label>Favourite Game:</mat-label>
                           <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Favourite Game" formControlName="game">
+                            <input matInput placeholder="Favourite Game" formControlName="favourite_game" value="element.favourite_game">
                             </mat-form-field>
             
             

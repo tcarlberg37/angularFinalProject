@@ -42,7 +42,7 @@ export class ApiService {
 
   // Update player
   UpdatePlayer(id, data: Player): Observable<any> {
-    let API_URL = `${this.endpoint}/update/${id}`;
+    let API_URL = `${this.endpoint}/edit-player/${id}`;
     return this.http.put(API_URL, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     )

@@ -24,7 +24,7 @@ export class AddPlayerComponent implements OnInit {
   @ViewChild('resetPlayerForm', {static: false}) myNgForm;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   playerForm: FormGroup;
-  StatusArray: any = ['Available', 'Unavailable'];
+  statusArray: any = ['Available', 'Unavailable'];
   rankArray: any = [1,2,3,4,5,6,7,8,9,10];
 
 
@@ -43,27 +43,14 @@ export class AddPlayerComponent implements OnInit {
   submitBookForm() {
     this.playerForm = this.fb.group({
       player_name: ['', [Validators.required]],
-      rank: [this.rankArray],
+      rank: 0,
       score: [0],
       time: ['0d 0h 0m'],
       favourite_game: ['', [Validators.required]],
-      status: [this.StatusArray]
+      status: ''
     })
   }
 
-  /* Add dynamic languages */
-  add(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-    // Add language
-    if ((value || '').trim() && this.StatusArray.length < 5) {
-      this.StatusArray.push({ name: value.trim() })
-    }
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-  }
 
   /* Get errors */
   public handleError = (controlName: string, errorName: string) => {
