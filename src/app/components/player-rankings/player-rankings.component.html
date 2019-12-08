@@ -7,6 +7,9 @@
   <p *ngIf="PlayerData.length <= 0" class="no-data">There are no players added yet!</p>
   
   <div class="container" *ngIf="PlayerData.length > 0">
+      <mat-form-field>
+          <input matInput (keyup)="filter($event.target.value)" placeholder="Search">
+        </mat-form-field>
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
 

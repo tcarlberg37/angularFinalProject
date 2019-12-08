@@ -36,4 +36,8 @@ export class GameListComponent implements OnInit {
     }
   }
 
+  filter(value: string) {
+    this.dataSource.filter = value.trim().toLowerCase();
+  }
+
 }
