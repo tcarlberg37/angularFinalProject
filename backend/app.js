@@ -18,7 +18,6 @@ mongoose.connect(dataBaseConfig.db, {
   }
 )
 
-
 const playerRoute = require('./routes/player.route');
 const gameRoute = require('./routes/game.route');
 const app = express();
@@ -26,11 +25,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist/angularFinalProject')));
 app.use('/', express.static(path.join(__dirname, 'dist/angularFinalProject')));
 app.use('/api', playerRoute)
 app.use('/api', gameRoute)
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+// to fix CORS header errors
+// app.use(
+//   cors({
+//     origin: "*",
+//     methods: "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+//   })
+// );
 
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
@@ -43,6 +54,7 @@ app.use((req, res, next) => {
 });
 
 app.use(function (err, req, res, next) {
+
   console.error(err.message);
   if (!err.statusCode) err.statusCode = 500;
   res.status(err.statusCode).send(err.message);

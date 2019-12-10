@@ -2,6 +2,8 @@
 
 # COMP3123 Final Project
 
+Please install Chrome extension [Allow-CORS](https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf) to bypass CORS errors.
+
 ## Group Members
 
 Thomas Carlberg - 101155271
