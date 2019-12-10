@@ -31,7 +31,7 @@ export class LoginComponent {
         let redirectUrl = '/player-rankings';
         this.router.navigateByUrl(redirectUrl);
       } else {
-        this.loginMessage = 'Incorrect username or password.';
+        this.loginMessage = 'Incorrect username or password. Hint: Try admin';
       }
     });
   }
