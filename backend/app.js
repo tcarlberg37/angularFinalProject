@@ -19,8 +19,8 @@ mongoose.connect(dataBaseConfig.db, {
 )
 
 
-const playerRoute = require('../backend/routes/player.route');
-const gameRoute = require('../backend/routes/game.route');
+const playerRoute = require('./routes/player.route');
+const gameRoute = require('./routes/game.route');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
