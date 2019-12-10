@@ -46,7 +46,7 @@
                 <!-- Favourite Game -->
               <mat-label>Favourite Game:</mat-label>
               <mat-form-field class="example-full-width">
-                <mat-select [(value)]="selected" formControlName="favourite_game" required>
+                <mat-select formControlName="favourite_game" required>
                   <mat-option [value]="game" *ngFor="let game of gameArray">{{game}}
                   </mat-option>
                 </mat-select>
@@ -59,7 +59,7 @@
             <!-- Status -->
             <mat-label>Status:</mat-label>
             <mat-form-field class="example-full-width">
-                <mat-select [(value)]="selected" formControlName="status" required>
+                <mat-select formControlName="status" required>
                         <mat-option [value]="statusArray" *ngFor="let statusArray of statusArray">{{statusArray}}
                         </mat-option>
                       </mat-select>
@@ -74,7 +74,7 @@
           <mat-card>
             <div class="full-wrapper button-wrapper">
               <div class="button-wrapper">
-                <input type="submit" class="btn btn-info" mat-flat-button color="warn" />
+                <button mat-flat-button color="warn">Add Player</button>
               </div>
             </div>
           </mat-card>

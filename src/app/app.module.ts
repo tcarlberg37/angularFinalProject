@@ -15,6 +15,7 @@ import { ApiService } from './shared/api.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AddGameComponent } from './components/add-game/add-game.component';
 import { EditGameComponent } from './components/edit-game/edit-game.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { EditGameComponent } from './components/edit-game/edit-game.component';
     JoinGameComponent,
     GameListComponent,
     AddGameComponent,
-    EditGameComponent
+    EditGameComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,8 @@
 const express = require('express');
 const app = express();
 const gameRoute = express.Router();
-
-// Game model
 let Game = require('../model/Game');
 
-// Add Game
 gameRoute.route('/add-game').post((req, res, next) => {
     Game.create(req.body, (error, data) => {
     if (error) {
@@ -17,7 +14,6 @@ gameRoute.route('/add-game').post((req, res, next) => {
   })
 });
 
-// Get all Games
 gameRoute.route('/games').get((req, res) => {
     Game.find((error, data) => {
     if (error) {
@@ -28,7 +24,6 @@ gameRoute.route('/games').get((req, res) => {
   })
 })
 
-// Get single Game
 gameRoute.route('/read-game/:id').get((req, res) => {
     Game.findById(req.params.id, (error, data) => {
     if (error) {
@@ -39,8 +34,6 @@ gameRoute.route('/read-game/:id').get((req, res) => {
   })
 })
 
-
-// Update Game
 gameRoute.route('/edit-game/:id').put((req, res, next) => {
     Game.findByIdAndUpdate(req.params.id, {
     $set: req.body
@@ -55,7 +48,6 @@ gameRoute.route('/edit-game/:id').put((req, res, next) => {
   })
 })
 
-// Delete Game
 gameRoute.route('/delete-game/:id').delete((req, res, next) => {
     Game.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {

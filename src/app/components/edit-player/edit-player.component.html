@@ -1,69 +1,59 @@
-<!-- Title group  -->
 <div class="title-group">
         <h1 class="mat-h1">Edit Player</h1>
         <mat-divider fxFlex="1 0"></mat-divider>
       </div>
       
-      <!-- Form -->
       <div class="inner-wrapper">
         <form [formGroup]="playerForm" (ngSubmit)="updatePlayerForm()" #resetPlayerForm="ngForm">
-                <mat-card>
-                        <div class="controlers-wrapper">
-                          <!-- Name -->
-                          <mat-form-field class="example-full-width">
-                            <mat-label>Player Name:</mat-label>
-                            <input matInput formControlName="player_name">
-                            <mat-error *ngIf="handleError('player_name', 'required')">
-                              You must provide a<strong>player name</strong>
-                            </mat-error>
-                          </mat-form-field>
-                  
-                          <!-- Ranking -->
-                          <mat-form-field>
-                            <mat-label>Ranking:</mat-label>
-                            <mat-select [value]="selected" formControlName="rank">
-                              <mat-option [value]="rankArray" *ngFor="let rankArray of rankArray">{{rankArray}}
-                              </mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="handleError('rank', 'required')">
-                              Rank is required
-                            </mat-error>
-                          </mat-form-field>
-            
-                          <!-- Score -->
-                          <mat-label>Score:</mat-label>
-                          <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Score" formControlName="score">
-                          </mat-form-field>
-            
-                          <!-- Time -->
-                          <mat-label>Time:</mat-label>
-                          <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Time" formControlName="time" value="element.time">
-                            </mat-form-field>
-            
-                            <!-- Favourite Game -->
-                          <mat-label>Favourite Game:</mat-label>
-                          <mat-form-field class="example-full-width">
-                            <input matInput placeholder="Favourite Game" formControlName="favourite_game" value="element.favourite_game">
-                            </mat-form-field>
-            
-            
-                        <!-- Status -->
-                        <mat-label>Status:</mat-label>
-                        <mat-form-field class="example-full-width">
-                                <mat-select [(value)]="selected" formControlName="status">
-                                        <mat-option [value]="statusArray" *ngFor="let statusArray of statusArray">{{statusArray}}
-                                        </mat-option>
-                                      </mat-select>
-                                      <mat-error *ngIf="handleError('status', 'required')">
-                                        Status is required
-                                      </mat-error>
-                          </mat-form-field>
-                        </div>
-                      </mat-card>
+          <mat-card>
+              <div class="controlers-wrapper">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Player Name:</mat-label>
+                  <input matInput formControlName="player_name">
+                  <mat-error *ngIf="handleError('player_name', 'required')">
+                    You must provide a<strong>player name</strong>
+                  </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field>
+                  <mat-label>Ranking:</mat-label>
+                  <mat-select formControlName="rank">
+                    <mat-option [value]="rankArray" *ngFor="let rankArray of rankArray">{{rankArray}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="handleError('rank', 'required')">
+                    Rank is required
+                  </mat-error>
+                </mat-form-field>
+  
+                <mat-label>Score:</mat-label>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Score" formControlName="score">
+                </mat-form-field>
+  
+                <mat-label>Time:</mat-label>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Time" formControlName="time" value="element.time">
+                  </mat-form-field>
+  
+                <mat-label>Favourite Game:</mat-label>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Favourite Game" formControlName="favourite_game" value="element.favourite_game">
+                  </mat-form-field>
+  
+              <mat-label>Status:</mat-label>
+              <mat-form-field class="example-full-width">
+                      <mat-select formControlName="status">
+                            <mat-option [value]="statusArray" *ngFor="let statusArray of statusArray">{{statusArray}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="handleError('status', 'required')">
+                          Status is required
+                        </mat-error>
+                </mat-form-field>
+              </div>
+            </mat-card>
       
-          <!-- Submit & Reset -->
           <mat-card>
             <div class="full-wrapper button-wrapper">
               <div class="button-wrapper">

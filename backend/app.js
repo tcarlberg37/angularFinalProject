@@ -6,7 +6,7 @@ let express = require('express'),
   dataBaseConfig = require('./database/db');
   createError = require('http-errors');
 
-// Connecting mongoDB
+// use mongoose to connect to mongoDB
 mongoose.Promise = global.Promise;
 mongoose.connect(dataBaseConfig.db, {
   useNewUrlParser: true
@@ -18,7 +18,7 @@ mongoose.connect(dataBaseConfig.db, {
   }
 )
 
-// Set up express js port
+
 const playerRoute = require('../backend/routes/player.route');
 const gameRoute = require('../backend/routes/game.route');
 const app = express();
@@ -32,18 +32,16 @@ app.use('/', express.static(path.join(__dirname, 'dist/angularFinalProject')));
 app.use('/api', playerRoute)
 app.use('/api', gameRoute)
 
-// Create port
 const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
 
-// Find 404 and hand over to error handler
+// error handling stuff
 app.use((req, res, next) => {
   next(createError(404));
 });
 
-// error handler
 app.use(function (err, req, res, next) {
   console.error(err.message);
   if (!err.statusCode) err.statusCode = 500;

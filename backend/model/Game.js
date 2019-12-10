@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// Define collection and schema
 let Game = new Schema({
   title: {
     type: String

@@ -1,5 +1,6 @@
-import { Component, ViewChild, HostListener, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,29 +10,15 @@ import { MatSidenav } from '@angular/material/sidenav';
 
 export class AppComponent {
   opened = true;
+  isLoggedIn = false;
   @ViewChild('sidenav', {static: false}) sidenav: MatSidenav;
 
-  ngOnInit() {
-    console.log(window.innerWidth)
-    if (window.innerWidth < 768) {
-      this.sidenav.fixedTopGap = 55;
-      this.opened = false;
-    } else {
-      this.sidenav.fixedTopGap = 55;
-      this.opened = true;
-    }
+  constructor(public authService: AuthService) {
+    this.isLoggedIn = this.authService.isLoggedIn;
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    if (event.target.innerWidth < 768) {
-      this.sidenav.fixedTopGap = 55;
-      this.opened = false;
-    } else {
-      this.sidenav.fixedTopGap = 55
-      this.opened = true;
-    }
-  }
+  ngOnInit() { }
+
 
   isBiggerScreen() {
     const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;

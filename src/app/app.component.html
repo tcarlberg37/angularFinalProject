@@ -1,38 +1,33 @@
-<!-- Toolbar -->
-<!--
 <mat-toolbar color="primary" class="header">
-  <div style="display: block;">Players</div>
+  <div style="display: block; padding: 1em;">Game Lobby</div>
   <span class="nav-tool-items">
     <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon>
   </span>
 </mat-toolbar>
--->
 
 <mat-sidenav-container>
-  <!-- Sidenav -->
-  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true" [fixedTopGap]>
+  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened"> <!-- *ngIf="this.isLoggedIn == true" -->
     <mat-nav-list>
       <!-- Player Screens -->
       <a mat-list-item routerLinkActive="active" routerLink="/player-rankings">
         <mat-icon>format_list_bulleted</mat-icon> Player Rankings
       </a>
       <!-- Admin Screens -->
-      <a mat-list-item routerLinkActive="active" routerLink="/add-player">
-        <mat-icon>add</mat-icon> Add Player
-      </a>
       <a mat-list-item routerLinkActive="active" routerLink="/player-list">
         <mat-icon>format_list_bulleted</mat-icon> View Player List
-      </a>
-      <a mat-list-item routerLinkActive="active" routerLink="/add-game">
-        <mat-icon>add</mat-icon> Add Game
       </a>
       <a mat-list-item routerLinkActive="active" routerLink="/game-list">
         <mat-icon>format_list_bulleted</mat-icon> View Games List
       </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/add-player">
+        <mat-icon>add</mat-icon> Add Player
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/add-game">
+        <mat-icon>add</mat-icon> Add Game
+      </a>
     </mat-nav-list>
   </mat-sidenav>
 
-  <!-- Main content -->
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

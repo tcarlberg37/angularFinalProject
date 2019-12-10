@@ -54,7 +54,7 @@
 
         <mat-label>Status:</mat-label>
         <mat-form-field class="example-full-width">
-            <mat-select [(value)]="selected" formControlName="status" required>
+            <mat-select formControlName="status" required>
                 <mat-option [value]="status" *ngFor="let status of statusArray">{{status}}
                 </mat-option>
             </mat-select>
@@ -66,7 +66,7 @@
       <mat-card>
         <div class="full-wrapper button-wrapper">
           <div class="button-wrapper">
-            <input type="submit" class="btn btn-info" mat-flat-button color="warn" />
+              <button mat-flat-button color="warn">Update</button>
           </div>
         </div>
       </mat-card>
